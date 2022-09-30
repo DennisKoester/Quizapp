@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(219, 219, 219) !important;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(219, 219, 219) !important;
+}
+
+.card-img-top {
+    margin: 12px !important;
+    width: auto !important;
+}
+
+.quiz-card {
+    width: 30rem;
+}
+
+.card {
+    background-color: rgba(65, 65, 65, 0.2) !important;
+
+}
+
+.question-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+    padding-top: 12px;
+}
+
+.quiz-answer:hover{
+    cursor: pointer;
+    background-color: rgba(65, 65, 65, 0.4) !important;
+
+}
