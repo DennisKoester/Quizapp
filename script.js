@@ -9,12 +9,12 @@ let questions = [
     },
 
     {
-        "question": "Who developed HTML?",
-        "answer_1": "Robbie-Williams",
-        "answer_2": "Lady-Gaga",
-        "answer_3": "Tim Berners-Lee",
-        "answer_4": "Justin Bieber",
-        "right_answer": 3
+        "question": "What does HTML stand for?",
+        "answer_1": "Hyper Trainer Marking Language",
+        "answer_2": "Hyper Text Markup Language",
+        "answer_3": "Hyper Text Marketing Language",
+        "answer_4": "Hyper Text Markup Leveler",
+        "right_answer": 2
     },
 
     {
@@ -44,13 +44,19 @@ function init() {
 }
 
 function showQuestion() {
-    let question = questions[currentQuestion];
 
-    document.getElementById('question-text').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    if (currentQuestion >= questions.length) {
+        console.log('DONE')
+    } else {
+        let question = questions[currentQuestion];
+
+        document.getElementById('current-question').innerHTML = currentQuestion + 1;
+        document.getElementById('question-text').innerHTML = question['question'];
+        document.getElementById('answer_1').innerHTML = question['answer_1'];
+        document.getElementById('answer_2').innerHTML = question['answer_2'];
+        document.getElementById('answer_3').innerHTML = question['answer_3'];
+        document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 function answer(selection) {
@@ -63,13 +69,11 @@ function answer(selection) {
     // console.log('Current question is ', question['right_answer']);
 
     if (selectedQuestionNumber == 3) {
-        console.log('Right Answer');
         document.getElementById(selection).parentNode.classList.add('bg-success');
         disableBtn();
 
 
     } else {
-        console.log('Wrong Answer');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         disableBtn();
@@ -81,14 +85,52 @@ function answer(selection) {
 
 /*  Disable all Buttons after selection */
 
-function disableBtn(){
-    let btns = document.getElementsByClassName('card');
+// To disable: document.getElementById('id').style.pointerEvents = 'none'; 
+// To re-enable: document.getElementById('id').style.pointerEvents = 'auto';  
+
+// Use '' if you want to allow CSS rules to set the value 
+
+function disableBtn() {
+    let btns = document.getElementsByClassName('hover');
 
     for (let i = 0; i < btns.length; i++) {
         const btn = btns[i];
 
-        btn.classList.remove("quiz-answer");
-        btn.onclick = null;
+        btn.style.pointerEvents = 'none';
     }
 }
+
+
+
+function nextQuestion() {
+    currentQuestion++; //Variable gets from 0 to 1
+    document.getElementById('next-btn').disabled = true;
+    resetAnswerButtons();
+    resetOnclick()
+    showQuestion();
+}
+
+function resetAnswerButtons() {
+
+    document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+function resetOnclick() {
+    let btns = document.getElementsByClassName('hover');
+
+    for (let i = 0; i < btns.length; i++) {
+        const btn = btns[i];
+
+        btn.classList.add("quiz-answer");
+        btn.style.pointerEvents = 'auto';
+    }
+}
+
 
