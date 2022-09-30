@@ -18,22 +18,25 @@ let questions = [
     },
 
     {
-        "question": "Who developed HTML?",
-        "answer_1": "Robbie-Williams",
-        "answer_2": "Lady-Gaga",
-        "answer_3": "Tim Berners-Lee",
-        "answer_4": "Justin Bieber",
-        "right_answer": 3
+        "question": "What does HTML stand for?",
+        "answer_1": "Hyper Trainer Marking Language",
+        "answer_2": "Hyper Text Markup Language",
+        "answer_3": "Hyper Text Marketing Language",
+        "answer_4": "Hyper Text Markup Leveler",
+        "right_answer": 2
     },
 
     {
-        "question": "Who developed HTML?",
-        "answer_1": "Robbie-Williams",
-        "answer_2": "Lady-Gaga",
-        "answer_3": "Tim Berners-Lee",
-        "answer_4": "Justin Bieber",
-        "right_answer": 3
+        "question": "What does HTML stand for?",
+        "answer_1": "Hyper Trainer Marking Language",
+        "answer_2": "Hyper Text Markup Language",
+        "answer_3": "Hyper Text Marketing Language",
+        "answer_4": "Hyper Text Markup Leveler",
+        "right_answer": 2
     },
+
+
+
 ];
 
 let currentQuestion = 0;
@@ -68,12 +71,14 @@ function answer(selection) {
     // console.log('selectedQuestionNumber is', selectedQuestionNumber)
     // console.log('Current question is ', question['right_answer']);
 
-    if (selectedQuestionNumber == 3) {
+    if (selectedQuestionNumber == question['right_answer']) {
+        console.log('right anser')
         document.getElementById(selection).parentNode.classList.add('bg-success');
         disableBtn();
 
 
     } else {
+        console.log('wrong anser')
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         disableBtn();
@@ -99,8 +104,6 @@ function disableBtn() {
         btn.style.pointerEvents = 'none';
     }
 }
-
-
 
 function nextQuestion() {
     currentQuestion++; //Variable gets from 0 to 1
