@@ -88,12 +88,13 @@ function answer(selection) {
 }
 
 
-/*  Disable all Buttons after selection */
+    /*  Disable all Buttons after selection */
 
-// To disable: document.getElementById('id').style.pointerEvents = 'none'; 
-// To re-enable: document.getElementById('id').style.pointerEvents = 'auto';  
-
-// Use '' if you want to allow CSS rules to set the value 
+    /** 
+     * ! To disable: document.getElementById('id').style.pointerEvents = 'none'; 
+     * ! To re-enable: document.getElementById('id').style.pointerEvents = 'auto'; 
+     * ! Use '' if you want to allow CSS rules to set the value
+     */  
 
 function disableBtn() {
     let btns = document.getElementsByClassName('hover');
@@ -106,7 +107,7 @@ function disableBtn() {
 }
 
 function nextQuestion() {
-    currentQuestion++; //Variable gets from 0 to 1
+    currentQuestion++; //! Variable gets from 0 to 1
     document.getElementById('next-btn').disabled = true;
     resetAnswerButtons();
     resetOnclick()
