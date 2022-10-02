@@ -18,7 +18,17 @@ let questions = [
     },
 
     {
-        "question": "What does HTML stand for?",
+        "question": "Inside which HTML element do we put the JavaScript?",
+        "answer_1": "&lt;js&gt;",
+        "answer_2": "&lt;javascript&gt;",
+        "answer_3": "&lt;scripting&gt;",
+        "answer_4": "&lt;script&gt;",
+        "right_answer": 4
+    },
+
+    {
+        "question": `What is the correct JavaScript syntax to change the content of the HTML element below?<br><br>
+        "&lt;p id=&quot;demo&quot;&gt;This is a demonstration.&lt;/p&gt;`,
         "answer_1": "Hyper Trainer Marking Language",
         "answer_2": "Hyper Text Markup Language",
         "answer_3": "Hyper Text Marketing Language",
@@ -35,11 +45,20 @@ let questions = [
         "right_answer": 2
     },
 
-
-
+    {
+        "question": "What does HTML stand for?",
+        "answer_1": "Hyper Trainer Marking Language",
+        "answer_2": "Hyper Text Markup Language",
+        "answer_3": "Hyper Text Marketing Language",
+        "answer_4": "Hyper Text Markup Leveler",
+        "right_answer": 2
+    },
 ];
 
 let currentQuestion = 0;
+let rightQuestions = 0
+let AUDIO_SUCCESS = new Audio('/audio/success.mp3');
+let AUDIO_FAIL = new Audio('/audio/fail.mp3');
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
@@ -48,17 +67,12 @@ function init() {
 
 function showQuestion() {
 
-    if (currentQuestion >= questions.length) {
-        console.log('DONE')
+    if (gameIsOver()) {
+        // console.log('DONE')
+        showEndScreen();
     } else {
-        let question = questions[currentQuestion];
-
-        document.getElementById('current-question').innerHTML = currentQuestion + 1;
-        document.getElementById('question-text').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
+        updateProgressBar()
+        updateNextQuestion();
     }
 }
 
@@ -71,16 +85,19 @@ function answer(selection) {
     // console.log('selectedQuestionNumber is', selectedQuestionNumber)
     // console.log('Current question is ', question['right_answer']);
 
-    if (selectedQuestionNumber == question['right_answer']) {
-        console.log('right anser')
+    if (rightAnswerSelected(selectedQuestionNumber, question)) {
+        // console.log('right anser')
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
+        AUDIO_SUCCESS.play();
         disableBtn();
 
 
     } else {
-        console.log('wrong anser')
+        // console.log('wrong anser')
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
         disableBtn();
 
     }
@@ -88,13 +105,13 @@ function answer(selection) {
 }
 
 
-    /*  Disable all Buttons after selection */
+/*  Disable all Buttons after selection */
 
-    /** 
-     * ! To disable: document.getElementById('id').style.pointerEvents = 'none'; 
-     * ! To re-enable: document.getElementById('id').style.pointerEvents = 'auto'; 
-     * ! Use '' if you want to allow CSS rules to set the value
-     */  
+/** 
+ * ! To disable: document.getElementById('id').style.pointerEvents = 'none'; 
+ * ! To re-enable: document.getElementById('id').style.pointerEvents = 'auto'; 
+ * ! Use '' if you want to allow CSS rules to set the value
+ */
 
 function disableBtn() {
     let btns = document.getElementsByClassName('hover');
@@ -137,4 +154,47 @@ function resetOnclick() {
     }
 }
 
+function restartQuiz() {
+    document.getElementById('header-img').src = '/Quizapp Design/quiz-night.png'; // Changes the image
+    document.getElementById('endScreen').style = 'display: none;'; // hide the end screen
+    document.getElementById('questionBody').style = ''; // displays the questions screen
 
+    rightQuestions = 0;
+    currentQuestion = 0;
+    init();
+}
+
+function showEndScreen() {
+    document.getElementById('endScreen').style = '';
+    document.getElementById('questionBody').style = 'display: none;';
+    document.getElementById('amountOfQuestions').innerHTML = questions.length;
+    document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
+    document.getElementById('header-img').src = '/Quizapp Design/trophy-gabff6e205_640.png';
+}
+
+function updateNextQuestion() {
+    let question = questions[currentQuestion];
+
+    document.getElementById('current-question').innerHTML = currentQuestion + 1;
+    document.getElementById('question-text').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
+
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+
+    document.getElementById('progress-bar').innerHTML = `${percent}%`;
+    document.getElementById('progress-bar').style = `width: ${percent}%;`;
+}
+
+function gameIsOver(){
+    return currentQuestion >= questions.length;
+}
+
+function rightAnswerSelected(selectedQuestionNumber, question){
+    return selectedQuestionNumber == question['right_answer'];
+}
