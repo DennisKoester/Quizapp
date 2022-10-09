@@ -10,25 +10,30 @@ function init() {
 
 function QuizHTML() {
     questions = questionsHTML;
-    restartQuiz();
+    resetAll();
     showQuestionScreen();
+    document.getElementById('header-img').src = 'Quizapp Design/htmlLogo.png';
     showQuestions();
 }
 
 
 function QuizCSS() {
     questions = questionsCSS;
-    restartQuiz();
+    resetAll();
     showQuestionScreen();
+    document.getElementById('header-img').src = 'Quizapp Design/cssLogo.png';
     showQuestions();
+
 }
 
 
 function QuizJS() {
     questions = questionsJS;
-    restartQuiz();
+    resetAll();
     showQuestionScreen();
+    document.getElementById('header-img').src = 'Quizapp Design/jsLogo.png';
     showQuestions();
+
 }
 
 
@@ -119,6 +124,12 @@ function resetOnclick() {
         btn.classList.add("quiz-answer");
         btn.style.pointerEvents = 'auto';
     }
+}
+
+function resetAll() {
+    resetAnswerButtons();
+    resetOnclick();
+    restartQuiz();
 }
 
 function restartQuiz() {
