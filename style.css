@@ -123,4 +123,5 @@ li a:hover {
 .profile-img {
     position: absolute;
     top: 35px;
+    cursor: pointer;
 }

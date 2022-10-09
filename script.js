@@ -1,43 +1,47 @@
 let currentQuestion = 0;
 let rightQuestions = 0
-let AUDIO_SUCCESS = new Audio('/audio/success.mp3');
-let AUDIO_FAIL = new Audio('/audio/fail.mp3');
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
+let questions = [];
 
 function init() {
     showStartScreen();
 }
 
-function startQuiz(quiz) {
+function QuizHTML() {
+    questions = questionsHTML;
     showQuestionScreen();
-    showQuestions(quiz);
+    showQuestions();
 }
 
-function chooseQuiz(quiz) {
-    chosenquiz = quiz;
-    if (chosenquiz == 'questionsHTML') {
-        startQuiz(quiz);
-    }
-    if (chosenquiz == 'questionsCSS') {
-        startQuiz(quiz);
-    }
-    if (chosenquiz == 'questionsJS') {
-        startQuiz(quiz);
-    }
+
+function QuizCSS() {
+    questions = questionsCSS;
+    showQuestionScreen();
+    showQuestions();
 }
 
-function showQuestions(quiz) {
 
-    if (gameIsOver(quiz)) {
+function QuizJS() {
+    questions = questionsJS;
+    showQuestionScreen();
+    showQuestions();
+}
+
+
+function showQuestions() {
+
+    if (gameIsOver()) {
         // console.log('DONE')
         showEndScreen();
     } else {
-        updateProgressBar(quiz)
-        updateNextQuestion(quiz);
+        updateProgressBar()
+        updateNextQuestion();
     }
 }
 
 function answer(selection) {
-    let question = questionsHTML[currentQuestion];
+    let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer_${question['right_answer']}`;
 
@@ -115,12 +119,11 @@ function resetOnclick() {
 }
 
 function restartQuiz() {
-    document.getElementById('header-img').src = '/Quizapp Design/quiz-night.png'; // Changes the image
+    document.getElementById('header-img').src = 'Quizapp Design/quiz-night.png'; // Changes the image
     document.getElementById('endScreen').style = 'display: none;'; // hide the end screen
     document.getElementById('questionBody').style = ''; // displays the questions screen
     document.getElementById('progress').style = '';
     document.getElementById('questionBody').style = 'display: none';
-
 
     rightQuestions = 0;
     currentQuestion = 0;
@@ -130,14 +133,13 @@ function restartQuiz() {
 function showEndScreen() {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display: none;';
-    document.getElementById('amountOfQuestions').innerHTML = questionsHTML.length;
+    document.getElementById('amountOfQuestions').innerHTML = questions.length;
     document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
-    document.getElementById('header-img').src = '/Quizapp Design/trophy-gabff6e205_640.png';
-    document.getElementById('progress').style = 'display: none';
+    document.getElementById('header-img').src = 'Quizapp Design/trophy-gabff6e205_640.png';
 }
 
-function updateNextQuestion(quiz) {
-    let question = quiz[currentQuestion];
+function updateNextQuestion() {
+    let question = questions[currentQuestion];
 
     document.getElementById('current-question').innerHTML = currentQuestion + 1;
     document.getElementById('question-text').innerHTML = question['question'];
@@ -147,16 +149,18 @@ function updateNextQuestion(quiz) {
     document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
-function updateProgressBar(quiz) {
-    let percent = currentQuestion / quiz.length;
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progress-bar').innerHTML = `${percent}%`;
     document.getElementById('progress-bar').style = `width: ${percent}%;`;
+
+    document.getElementById('all-questions').innerHTML = `${questions.length}`;
 }
 
-function gameIsOver(quiz) {
-    return currentQuestion >= quiz.length;
+function gameIsOver() {
+    return currentQuestion >= questions.length;
 }
 
 function rightAnswerSelected(selectedQuestionNumber, question) {
@@ -166,6 +170,7 @@ function rightAnswerSelected(selectedQuestionNumber, question) {
 function showStartScreen() {
     document.getElementById('startScreen').style = '';
     document.getElementById('progress').style = 'display: none';
+    document.getElementById('questionBody').style = 'display: none;';
 }
 
 function showQuestionScreen() {

@@ -35,17 +35,17 @@
     <div id="content">
         <header>
             <nav id="nav">
-                <img class="profile-img" src="Quizapp Design/logo.png" alt="Profile Logo">
+                <img onclick="init()" class="profile-img" src="Quizapp Design/logo.png" alt="Profile Logo">
                 <div class="navi">
                     <ul class="">
                         <li class="">
-                            <a class="" href="#" onclick="chooseQuiz('questionsHTML')">HTML</a>
+                            <a class="" href="#" onclick="QuizHTML()">HTML</a>
                         </li>
                         <li class="">
-                            <a class="" href="#" onclick="chooseQuiz('questionsCSS')">CSS</a>
+                            <a class="" href="#" onclick="QuizCSS()">CSS</a>
                         </li>
                         <li class="">
-                            <a class="" href="#" onclick="chooseQuiz('questionsJS')">JavaScript</a>
+                            <a class="" href="#" onclick="QuizJS()">JavaScript</a>
                         </li>
                     </ul>
                 </div>
@@ -63,7 +63,7 @@
                 <div id="startScreen" class="startScreen">
                     <h1>Welcome to Quiz Night</h1>
                     <p>Please choose a quiz or just start it!</p>
-                    <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+                    <button class="btn btn-primary" onclick="QuizHTML()">Start Quiz</button>
                 </div>
 
                 <div class="card-body" id="endScreen" style="display: none;">
