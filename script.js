@@ -4,36 +4,18 @@ let AUDIO_SUCCESS = new Audio('audio/success.mp3');
 let AUDIO_FAIL = new Audio('audio/fail.mp3');
 let questions = [];
 
+
 function init() {
     showStartScreen();
 }
 
-function QuizHTML() {
-    questions = questionsHTML;
+
+function startQuiz(quiz) {
+    questions = quiz;
     resetAll();
     showQuestionScreen();
-    document.getElementById('header-img').src = 'Quizapp Design/htmlLogo.png';
     showQuestions();
-}
-
-
-function QuizCSS() {
-    questions = questionsCSS;
-    resetAll();
-    showQuestionScreen();
-    document.getElementById('header-img').src = 'Quizapp Design/cssLogo.png';
-    showQuestions();
-
-}
-
-
-function QuizJS() {
-    questions = questionsJS;
-    resetAll();
-    showQuestionScreen();
-    document.getElementById('header-img').src = 'Quizapp Design/jsLogo.png';
-    showQuestions();
-
+    document.getElementById('header-img').src = `${questions['question-image']}`;
 }
 
 
@@ -47,6 +29,7 @@ function showQuestions() {
         updateNextQuestion();
     }
 }
+
 
 function answer(selection) {
     let question = questions[currentQuestion];

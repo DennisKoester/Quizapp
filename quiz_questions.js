@@ -5,7 +5,8 @@ let questionsHTML = [
         "answer_2": "Lady-Gaga",
         "answer_3": "Tim Berners-Lee",
         "answer_4": "Justin Bieber",
-        "right_answer": 3
+        "right_answer": 3,
+        "question-image": "Quizapp Design/htmlLogo.png"
     },
 
     {
@@ -14,7 +15,8 @@ let questionsHTML = [
         "answer_2": "Hyper Text Markup Language",
         "answer_3": "Hyper Text Marketing Language",
         "answer_4": "Hyper Text Markup Leveler",
-        "right_answer": 2
+        "right_answer": 2,
+        "question-image": "Quizapp Design/htmlLogo.png"
     },
 
     {

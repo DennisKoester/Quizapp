@@ -39,13 +39,13 @@
                 <div class="navi">
                     <ul class="">
                         <li class="">
-                            <a class="" href="#" onclick="QuizHTML()">HTML</a>
+                            <a class="" href="#" onclick="startQuiz(questionsHTML)">HTML</a>
                         </li>
                         <li class="">
-                            <a class="" href="#" onclick="QuizCSS()">CSS</a>
+                            <a class="" href="#" onclick="startQuiz(questionsCSS)">CSS</a>
                         </li>
                         <li class="">
-                            <a class="" href="#" onclick="QuizJS()">JavaScript</a>
+                            <a class="" href="#" onclick="startQuiz(questionsJS)">JavaScript</a>
                         </li>
                     </ul>
                 </div>
@@ -63,7 +63,7 @@
                 <div id="startScreen" class="startScreen">
                     <h1>Welcome to Quiz Night</h1>
                     <p>Please choose a quiz or just start it!</p>
-                    <button class="btn btn-primary" onclick="QuizHTML()">Start Quiz</button>
+                    <button class="btn btn-primary" onclick="startQuiz(questionsHTML)">Start Quiz</button>
                 </div>
 
                 <div class="card-body" id="endScreen" style="display: none;">
