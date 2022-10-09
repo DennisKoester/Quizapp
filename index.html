@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizapp</title>
 
-    <link rel="icon" type="image/x-icon" href="/Quizapp Design/icons8-quiz-65.png">
+    <link rel="icon" type="image/x-icon" href="Quizapp Design/icons8-quiz-65.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="quiz_questions.js"></script>
 
 
     <!-- bootstrap -->
@@ -22,100 +23,105 @@
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Rubik&display=swap"
+        rel="stylesheet">
+
 </head>
 
 <body onload="init()">
 
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <div id="content">
+        <header>
+            <nav id="nav">
+                <img class="profile-img" src="Quizapp Design/logo.png" alt="Profile Logo">
+                <div class="navi">
+                    <ul class="">
+                        <li class="">
+                            <a class="" href="#" onclick="chooseQuiz('questionsHTML')">HTML</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">HTML</a>
+                        <li class="">
+                            <a class="" href="#" onclick="chooseQuiz('questionsCSS')">CSS</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">JavaScript</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Games</a>
+                        <li class="">
+                            <a class="" href="#" onclick="chooseQuiz('questionsJS')">JavaScript</a>
                         </li>
                     </ul>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <div class="container">
-        <div class="card quiz-card ">
-            <img src="/Quizapp Design/quiz-night.png" class="card-img-top" id="header-img" alt="Quiz Night">
+        <div class="card-container">
+            <div class="card quiz-card ">
+                <img src="Quizapp Design/quiz-night.png" class="card-img-top" id="header-img" alt="Quiz Night">
 
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" id="progress-bar" style="width: 0%;">25%</div>
-            </div>
-
-            <div class="card-body" id="endScreen" style="display: none;">
-                <h1>Quiz End!!</h1>
-                <p>You answered <b id="amountOfRightQuestions">XXX</b> of <b id="amountOfQuestions">XXX</b> questions
-                    right!</p>
-
-                <div class="button-row">
-                    <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
+                <div class="progress" id="progress" style="display: none;">
+                    <div class="progress-bar" role="progressbar" id="progress-bar" style="width: 0%;">25%</div>
                 </div>
 
-            </div>
+                <div id="startScreen" class="startScreen">
+                    <h1>Welcome to Quiz Night</h1>
+                    <p>Please choose a quiz or just start it!</p>
+                    <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+                </div>
 
-            <div class="card-body" id="questionBody">
-                <h5 class="card-title" id="question-text">Question</h5>
+                <div class="card-body" id="endScreen" style="display: none;">
+                    <h1>Quiz End!!</h1>
+                    <p>You answered <b id="amountOfRightQuestions">XXX</b> of <b id="amountOfQuestions">XXX</b>
+                        questions
+                        right!</p>
 
-                <div class="card mb-2 quiz-answer hover" id="off" onclick="answer(`answer_1`)">
-                    <div class="card-body" id="answer_1">
-                        This is some text within a card body.
+                    <div class="button-row">
+                        <button class="btn btn-primary" onclick="restartQuiz()">Restart Quiz</button>
                     </div>
+
                 </div>
 
+                <div class="card-body" id="questionBody" style="display: none;">
+                    <h5 class="card-title" id="question-text">Question</h5>
 
-                <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_2`)">
-                    <div class="card-body" id="answer_2">
-                        This is some text within a card body.
+                    <div class="card mb-2 quiz-answer hover" id="off" onclick="answer(`answer_1`)">
+                        <div class="card-body" id="answer_1">
+                            This is some text within a card body.
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_3`)">
-                    <div class="card-body" id="answer_3">
-                        This is some text within a card body.
+                    <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_2`)">
+                        <div class="card-body" id="answer_2">
+                            This is some text within a card body.
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_4`)">
-                    <div class="card-body" id="answer_4">
-                        This is some text within a card body.
+                    <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_3`)">
+                        <div class="card-body" id="answer_3">
+                            This is some text within a card body.
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="question-footer">
-                    <span>
-                        <b id="current-question">1</b> von <b id="all-questions"></b> Fragen
-                    </span>
-                    <button type="button" class="btn btn-primary" id="next-btn" disabled onclick="nextQuestion()">Next
-                        Question</button>
+                    <div class="card mb-2 quiz-answer hover" onclick="answer(`answer_4`)">
+                        <div class="card-body" id="answer_4">
+                            This is some text within a card body.
+                        </div>
+                    </div>
 
+
+                    <div class="question-footer">
+                        <span>
+                            <b id="current-question">1</b> von <b id="all-questions"></b> Fragen
+                        </span>
+                        <button type="button" class="btn btn-primary" id="next-btn" disabled
+                            onclick="nextQuestion()">Next
+                            Question</button>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
