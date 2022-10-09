@@ -65,8 +65,8 @@ let questionsCSS = [
     },
 
     {
-        "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
-        "answer_1": "styles",
+        "question": "Which HTML attribute is used to define inline styles?",
+        "answer_1": "style",
         "answer_2": "class",
         "answer_3": "font",
         "answer_4": "style",
@@ -74,7 +74,7 @@ let questionsCSS = [
     },
 
     {
-        "question": "Which HTML attribute is used to define inline styles?",
+        "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
         "answer_1": "In the &lt;body&gt; section",
         "answer_2": "In the &lt;head&gt; section",
         "answer_3": "At the end of the document",

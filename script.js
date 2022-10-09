@@ -10,6 +10,7 @@ function init() {
 
 function QuizHTML() {
     questions = questionsHTML;
+    restartQuiz();
     showQuestionScreen();
     showQuestions();
 }
@@ -17,6 +18,7 @@ function QuizHTML() {
 
 function QuizCSS() {
     questions = questionsCSS;
+    restartQuiz();
     showQuestionScreen();
     showQuestions();
 }
@@ -24,6 +26,7 @@ function QuizCSS() {
 
 function QuizJS() {
     questions = questionsJS;
+    restartQuiz();
     showQuestionScreen();
     showQuestions();
 }
