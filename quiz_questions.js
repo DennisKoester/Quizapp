@@ -16,7 +16,6 @@ let questionsHTML = [
         "answer_3": "Hyper Text Marketing Language",
         "answer_4": "Hyper Text Markup Leveler",
         "right_answer": 2,
-        "question-image": "Quizapp Design/htmlLogo.png"
     },
 
     {
@@ -54,7 +53,9 @@ let questionsCSS = [
         "answer_2": "Creative Style Sheets",
         "answer_3": "Cascading Style Sheets",
         "answer_4": "Colorful Style Sheets",
-        "right_answer": 3
+        "right_answer": 3,
+        "question-image": "Quizapp Design/cssLogo.png"
+
     },
 
     {
@@ -101,7 +102,9 @@ let questionsJS = [
         "answer_2": "&lt;javascript&gt;",
         "answer_3": "&lt;scripting&gt;",
         "answer_4": "&lt;script&gt;",
-        "right_answer": 4
+        "right_answer": 4,
+        "question-image": "Quizapp Design/jsLogo.png"
+
     },
 
     {

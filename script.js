@@ -15,7 +15,7 @@ function startQuiz(quiz) {
     resetAll();
     showQuestionScreen();
     showQuestions();
-    document.getElementById('header-img').src = `${questions['question-image']}`;
+    document.getElementById('header-img').src = `${questions[0]['question-image']}`;
 }
 
 
@@ -24,6 +24,7 @@ function showQuestions() {
     if (gameIsOver()) {
         // console.log('DONE')
         showEndScreen();
+        updateProgressBar();
     } else {
         updateProgressBar()
         updateNextQuestion();
@@ -39,21 +40,19 @@ function answer(selection) {
     // console.log('Selected answer is ', selection);
     // console.log('selectedQuestionNumber is', selectedQuestionNumber)
     // console.log('Current question is ', question['right_answer']);
+    disableBtns();
 
     if (rightAnswerSelected(selectedQuestionNumber, question)) {
         // console.log('right anser')
         document.getElementById(selection).parentNode.classList.add('bg-success');
         rightQuestions++;
         AUDIO_SUCCESS.play();
-        disableBtn();
-
 
     } else {
         // console.log('wrong anser')
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         AUDIO_FAIL.play();
-        disableBtn();
 
     }
     document.getElementById('next-btn').disabled = false;
@@ -68,7 +67,7 @@ function answer(selection) {
  * ! Use '' if you want to allow CSS rules to set the value
  */
 
-function disableBtn() {
+function disableBtns() {
     let btns = document.getElementsByClassName('hover');
 
     for (let i = 0; i < btns.length; i++) {
@@ -147,7 +146,7 @@ function updateNextQuestion() {
 }
 
 function updateProgressBar() {
-    let percent = (currentQuestion + 1) / questions.length;
+    let percent = (currentQuestion) / questions.length;
     percent = Math.round(percent * 100);
 
     document.getElementById('progress-bar').innerHTML = `${percent}%`;
