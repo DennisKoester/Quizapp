@@ -114,7 +114,7 @@ h5 {
     cursor: pointer;
 }
 
-#nav li a,
+#nav li a:hover,
 #topMenu li a:hover {
     display: inline-block !important;
     color: white !important;

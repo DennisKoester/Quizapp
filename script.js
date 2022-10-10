@@ -167,6 +167,7 @@ function showStartScreen() {
     document.getElementById('startScreen').style = '';
     document.getElementById('progress').style = 'display: none';
     document.getElementById('questionBody').style = 'display: none;';
+    document.getElementById('header-img').src = 'Quizapp Design/quiz-night.png'
 }
 
 function showQuestionScreen() {
