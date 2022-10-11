@@ -77,6 +77,7 @@ function disableBtns() {
     }
 }
 
+
 function nextQuestion() {
     currentQuestion++; //! Variable gets from 0 to 1
     document.getElementById('next-btn').disabled = true;
@@ -84,6 +85,7 @@ function nextQuestion() {
     resetOnclick()
     showQuestions();
 }
+
 
 function resetAnswerButtons() {
 
@@ -97,6 +99,7 @@ function resetAnswerButtons() {
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
 
+
 function resetOnclick() {
     let btns = document.getElementsByClassName('hover');
 
@@ -108,11 +111,13 @@ function resetOnclick() {
     }
 }
 
+
 function resetAll() {
     resetAnswerButtons();
     resetOnclick();
     restartQuiz();
 }
+
 
 function restartQuiz() {
     document.getElementById('header-img').src = 'Quizapp Design/quiz-night.png'; // Changes the image
@@ -126,6 +131,7 @@ function restartQuiz() {
     init();
 }
 
+
 function showEndScreen() {
     document.getElementById('endScreen').style = '';
     document.getElementById('questionBody').style = 'display: none;';
@@ -133,6 +139,7 @@ function showEndScreen() {
     document.getElementById('amountOfRightQuestions').innerHTML = rightQuestions;
     document.getElementById('header-img').src = 'Quizapp Design/trophy-gabff6e205_640.png';
 }
+
 
 function updateNextQuestion() {
     let question = questions[currentQuestion];
@@ -145,6 +152,7 @@ function updateNextQuestion() {
     document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
+
 function updateProgressBar() {
     let percent = (currentQuestion) / questions.length;
     percent = Math.round(percent * 100);
@@ -155,13 +163,16 @@ function updateProgressBar() {
     document.getElementById('all-questions').innerHTML = `${questions.length}`;
 }
 
+
 function gameIsOver() {
     return currentQuestion >= questions.length;
 }
 
+
 function rightAnswerSelected(selectedQuestionNumber, question) {
     return selectedQuestionNumber == question['right_answer'];
 }
+
 
 function showStartScreen() {
     document.getElementById('startScreen').style = '';
@@ -169,6 +180,7 @@ function showStartScreen() {
     document.getElementById('questionBody').style = 'display: none;';
     document.getElementById('header-img').src = 'Quizapp Design/quiz-night.png'
 }
+
 
 function showQuestionScreen() {
     document.getElementById('questionBody').style = '';
