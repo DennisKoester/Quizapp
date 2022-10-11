@@ -69,7 +69,7 @@ let questionsCSS = [
 
     {
         "question": "Which HTML attribute is used to define inline styles?",
-        "answer_1": "style",
+        "answer_1": "styles",
         "answer_2": "class",
         "answer_3": "font",
         "answer_4": "style",
@@ -132,7 +132,7 @@ let questionsJS = [
         "answer_2": "function:myFunction()",
         "answer_3": "function = myFunction()",
         "answer_4": "function = {myFunction()}",
-        "right_answer": 2
+        "right_answer": 1
     },
 
     {
