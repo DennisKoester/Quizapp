@@ -53,10 +53,14 @@ body {
     padding-top: 12px;
 }
 
-.quiz-answer:hover {
-    cursor: pointer;
-    background-color: rgba(65, 65, 65, 0.4) !important;
+@media (hover: hover) {
+
+    .quiz-answer:hover {
+        cursor: pointer;
+        background-color: rgba(65, 65, 65, 0.4) !important;
+    }
 }
+
 
 h1 {
     font-size: 35px !important;
@@ -115,7 +119,7 @@ h5 {
 }
 
 #nav li a:hover,
-#topMenu li a:hover {
+#topMenu li a:active {
     display: inline-block !important;
     color: white !important;
 }
@@ -133,6 +137,14 @@ ul {
 
 #topMenu {
     display: none;
+}
+
+.bg-success {
+    transition: 225ms;
+}
+
+.bg-danger {
+    transition: 225ms;
 }
 
 @media (max-width: 720px) {
@@ -188,6 +200,10 @@ ul {
     .quiz-card {
         height: 100% !important;
     }
+
+    .card-body {
+        padding: 10px !important;
+    }
 }
 
 @media (max-width: 370px) {
@@ -201,14 +217,14 @@ ul {
     }
 
     .card-body {
-        padding: 6px !important;
+        padding: 4px !important;
     }
 
     .startScreen p {
         padding: 0 5px 0 5px !important;
     }
 
-    h1 {
+    h1 {`
         font-size: 22px !important;
         font-weight: bold !important;
     }
