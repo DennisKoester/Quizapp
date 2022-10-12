@@ -1,8 +1,8 @@
 let currentQuestion = 0;
 let rightQuestions = 0
-let AUDIO_SUCCESS = new Audio('audio/success.mp3');
-let AUDIO_FAIL = new Audio('audio/fail.mp3');
 let questions = [];
+const AUDIO_SUCCESS = new Audio('audio/success.mp3');
+const AUDIO_FAIL = new Audio('audio/fail.mp3');
 
 
 function init() {
@@ -20,7 +20,6 @@ function startQuiz(quiz) {
 
 
 function showQuestions() {
-
     if (gameIsOver()) {
         // console.log('DONE')
         showEndScreen();
@@ -47,13 +46,11 @@ function answer(selection) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         rightQuestions++;
         AUDIO_SUCCESS.play();
-
     } else {
         // console.log('wrong anser')
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
         AUDIO_FAIL.play();
-
     }
     document.getElementById('next-btn').disabled = false;
 }
@@ -88,7 +85,6 @@ function nextQuestion() {
 
 
 function resetAnswerButtons() {
-
     document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_1').parentNode.classList.remove('bg-success');
     document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
@@ -159,7 +155,6 @@ function updateProgressBar() {
 
     document.getElementById('progress-bar').innerHTML = `${percent}%`;
     document.getElementById('progress-bar').style = `width: ${percent}%;`;
-
     document.getElementById('all-questions').innerHTML = `${questions.length}`;
 }
 
