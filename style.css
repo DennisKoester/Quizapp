@@ -191,12 +191,22 @@ ul {
     .quiz-card {
         max-width: 350px;
     }
+
+    .card-img-top {
+        max-height: 250px;
+        object-fit: contain;
+    }
 }
 
 @media (max-width: 370px) {
 
     .quiz-card {
         margin: 13px;
+    }
+
+    .card-img-top {
+        max-height: 180px;
+        object-fit: contain;
     }
 
     .startScreen p {
@@ -211,4 +221,5 @@ ul {
     h5 {
         font-size: 16px !important;
     }
+
 }
