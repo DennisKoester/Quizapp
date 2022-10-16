@@ -200,13 +200,12 @@ ul {
 
 @media (max-width: 370px) {
 
-    .quiz-card {
-        margin: 13px;
+    .card-body {
+        font-size: 14px;
     }
 
-    .card-img-top {
-        max-height: 180px;
-        object-fit: contain;
+    .quiz-card {
+        margin: 13px;
     }
 
     .startScreen p {
@@ -215,7 +214,7 @@ ul {
 
     h1 {
         font-size: 22px !important;
-        font-weight: bold !important;
+        font-weight: 500 !important;
     }
 
     h5 {
